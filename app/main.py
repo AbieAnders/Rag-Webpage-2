@@ -1,0 +1,12 @@
+from fastapi import FastAPI
+from app.config import settings
+from app.api.routes import ProcessText  #importing routes
+
+app = FastAPI(title = settings.APP_NAME, debug = settings.DEBUG)
+
+app.include_router(ProcessText.router, prefix="/api")
+
+@app.get("/")
+async def root():
+    # Simulates the root landing page.
+    return {"message": f"Welcome to {settings.APP_NAME}"}
