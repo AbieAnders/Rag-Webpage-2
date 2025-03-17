@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from app.config import settings
-from app.api.routes import ProcessText  #importing routes
+from app.api.routes import ProcessText, RetrieveText  #importing routes
 
 app = FastAPI(title = settings.APP_NAME, debug = settings.DEBUG)
 
-app.include_router(ProcessText.router, prefix="/api")
+app.include_router(ProcessText.router, prefix = "/api")
+app.include_router(RetrieveText.router, prefix = "/api")
 
 @app.get("/")
 async def root():

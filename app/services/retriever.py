@@ -1,18 +1,18 @@
-from langchain.vectorstores import FAISS
-from app.services.embedder import text_to_embedding
-import faiss
+import os
+from pinecone import Pinecone
 
-class VectorRetriever:
-    def __init__(self):
-        self.index = faiss.IndexFlatL2(1536)
-    
-    def add_text(self, text):
-        vector = text_to_embedding(text)
-        self.index.add(vector)
-    
-    def search(self, query):
-        vector = text_to_embedding(query)
-        distances, indices = self.index.search(vector, k = 5)
-        return indices
-    
-retiever = VectorRetriever()
+PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
+
+pc = Pinecone(api_key = PINECONE_API_KEY, environment = "us-west1-gcp")
+
+def similarity_search(text):
+    test_index = "quickstart-text-embeddings"
+    index = pc.Index(test_index)
+    query_vector = [0.1, 0.2, 0.3, 0.4]
+
+    results = index.query(query_vector, top_k = 5, include_metadata = True)
+
+    for match in results['matches']:
+        print(f"ID: {match['id']}, Score: {match['score']}")
+        if 'metadata' in match:
+            print(f"Metadata: {match['metadata']}")
