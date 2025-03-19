@@ -9,6 +9,6 @@ router = APIRouter()
 async def embed_text(request: TextRequestSchema):
     try:
         embedding = text_to_embedding(request.text)
-        return {"text": request.text, "embedding": embedding}
+        return { "text": request.text, "embedding": embedding }
     except Exception as e:
         raise HTTPException(status_code = 500, detail = str(e))

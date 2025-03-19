@@ -16,3 +16,4 @@ def similarity_search(text):
         print(f"ID: {match['id']}, Score: {match['score']}")
         if 'metadata' in match:
             print(f"Metadata: {match['metadata']}")
+

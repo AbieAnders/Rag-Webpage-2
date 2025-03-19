@@ -7,5 +7,5 @@ def text_to_embedding(text):
         model = "gemini-embedding-exp-03-0",
         contents = text,
     )
-    print(result.embeddings)
+    #print(result.embeddings)
     return result.embeddings

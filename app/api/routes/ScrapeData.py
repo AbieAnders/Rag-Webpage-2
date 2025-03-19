@@ -5,10 +5,10 @@ from app.services.retriever import similarity_search
 
 router = APIRouter()
 
-@router.get("/retrieve", response_model = EmbeddingResponseSchema)
-async def retrieve_text(request: TextRequestSchema):
+@router.get("/scrape")
+async def scrape_text(request: TextRequestSchema):
     try:
-        embedding = similarity_search(request.text)
+        text = scrape_website(request.text)
         return { "text": request.text, "embedding": embedding }
     except Exception as e:
         raise HTTPException(status_code = 500, detail = str(e))
