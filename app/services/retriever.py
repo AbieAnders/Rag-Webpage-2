@@ -1,6 +1,6 @@
 import os
-from pinecone import Pinecone
-
+#from pinecone import Pinecone
+'''
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
 
 pc = Pinecone(api_key = PINECONE_API_KEY, environment = "us-west1-gcp")
@@ -16,4 +16,4 @@ def similarity_search(text):
         print(f"ID: {match['id']}, Score: {match['score']}")
         if 'metadata' in match:
             print(f"Metadata: {match['metadata']}")
-
+'''

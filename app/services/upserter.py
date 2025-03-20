@@ -1,13 +1,12 @@
 import os
-from pinecone import Pinecone, ServerlessSpec
+#from pinecone import Pinecone, ServerlessSpec
 from pydantic import BaseModel
 import numpy as np
 
 PINECONE_API_KEY = os.getenv("PINECONE_API_KEY", "")
-
+'''
 pc = Pinecone(api_key = PINECONE_API_KEY, environment = "us-west1-gcp")
 
-'''
 index_parameters = {
     "open-embedding-model": {
         "dimension": 1536,

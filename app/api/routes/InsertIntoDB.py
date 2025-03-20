@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 
 router = APIRouter()
-
+'''
 @router.post("/insert_weaviate")
 async def insert_to_weaviate(client):
     try:
@@ -19,4 +19,4 @@ async def insert_to_weaviate(client):
     except Exception as e:
         print(e.args[0])
         print("Failed to create collection")
-        raise HTTPException(status_code = 500, detail = f"Failed to create collection")
+        raise HTTPException(status_code = 500, detail = f"Failed to create collection")'''

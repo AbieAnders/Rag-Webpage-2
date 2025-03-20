@@ -1,8 +1,10 @@
 from fastapi import APIRouter
+from app.schemas.request import ChatRequestSchema
 
 router = APIRouter()
 
-@router.get("/chat")
-async def read_chat():
-    # Simulates the chat landing page.
-    return {"Message": "This is the chat endpoint."}
+@router.post("/chat")
+async def send_chat_message(message: ChatRequestSchema):  # Expecting a JSON body
+    # Here you can process the message
+    print({"message": f"Received input: {message.user_input}"})
+    return {"message": f"Received input: {message.user_input}"}
